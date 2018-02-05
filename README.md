@@ -8,7 +8,36 @@ For more info about what can be retrieved from Mailgun please visit the [Mailgun
 
 ## Install
 
+Install the package via composer
+
 >composer require adrianhl/mailgun-events
+
+Register the ServiceProvider and (optionally) the Facade
+
+```php
+// config/app.php
+
+'providers' => [
+    ...
+    MailgunEvents\MailgunEventsServiceProvider::class
+
+];
+
+...
+
+'aliases' => [
+	...
+    'MailgunEvents' => MailgunEvents\Facades\MailgunEvents::class
+],
+```
+
+Next, publish the config file with the following `artisan` command.<br />
+
+```bash
+php artisan vendor:publish --provider="MailgunEvents\MailgunEventsServiceProvider"
+```
+
+After publishing, configure the package in `config/mailgun_events/config.php`.
 
 ## License
 
