@@ -71,7 +71,5 @@ class MailgunEventsServiceProvider extends ServiceProvider
             $mgc->setApiEndpoint($apiEndPoint);
             return $mgc;
         });
-
-        $this->app->bind(MailgunEventsContract::class, 'mailgunevents');
     }
 }
