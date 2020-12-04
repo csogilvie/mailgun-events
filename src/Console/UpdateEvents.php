@@ -17,7 +17,7 @@ class UpdateEvents extends Command
      *
      * @var string
      */
-    protected $signature = 'mailgun-events:events {--daysBackwards= : The number of days to retrieve the events; default to 31. If the hours backwards option is provided then this option is ignored.} {--hoursBackwards= : The number of hours to retrieve the events; default to 0} {--filter= : A filter expresion. More info at https://documentation.mailgun.com/api-events.html#filter-expression} {--stopAfterNPages= : The process will stop after N pages without new events. Defaults to 5}';
+    protected $signature = 'mailgun-events:events {--yesterday: Fetch Yesterday} {--daysBackwards= : The number of days to retrieve the events; default to 31. If the hours backwards option is provided then this option is ignored.} {--hoursBackwards= : The number of hours to retrieve the events; default to 0} {--filter= : A filter expresion. More info at https://documentation.mailgun.com/api-events.html#filter-expression} {--stopAfterNPages= : The process will stop after N pages without new events. Defaults to 5}';
 
     /**
      * The console command description.
@@ -52,7 +52,6 @@ class UpdateEvents extends Command
         /**  The following code does not follow the event polling proposed because it will store (if new) all the events on each iteration.
          *    Therefore there is no need to check if a page is valid, any missing item will be stored in the next(s) call(s) to the command.
          */
-
         //Initial Parameters
         $end = Carbon::now();
         $stopDate = null;
@@ -84,6 +83,12 @@ class UpdateEvents extends Command
             return;
         }
 
+        if ($this->option('yesterday')) {
+            $begin = Carbon::yesterday()->setTime(0,0,0);
+            $end = Carbon::yesterday()->setTime(23,59,59);
+        }
+
+        dd([$begin, $end]);
         $ascending = "yes";
 
         try {
