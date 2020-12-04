@@ -33,6 +33,7 @@ class UpdateEvents extends Command
             ['hoursBackwards', null, InputOption::VALUE_OPTIONAL, 'The number of hours to retrieve the events; default to 0'],
             ['filter', null, InputOption::VALUE_OPTIONAL, 'A filter expression. More info at https://documentation.mailgun.com/api-events.html#filter-expression'],
             ['stopAfterNPages', null, InputOption::VALUE_OPTIONAL, 'The process will stop after N pages without new events. It defaults to 5'],
+            ['yesterday', null, InputOption::VALUE_OPTIONAL, 'Run for yesterday']
         ];
     }
 
