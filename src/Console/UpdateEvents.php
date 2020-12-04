@@ -88,7 +88,7 @@ class UpdateEvents extends Command
             $begin = Carbon::yesterday()->setTime(0,0,0);
             $end = Carbon::yesterday()->setTime(23,59,59);
         }
-
+        dump($this->option('yesterday'));
         dd([$begin, $end]);
         $ascending = "yes";
 
