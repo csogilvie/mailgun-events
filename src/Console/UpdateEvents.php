@@ -17,7 +17,7 @@ class UpdateEvents extends Command
      *
      * @var string
      */
-    protected $signature = 'mailgun-events:events {--yesterday=: Fetch Yesterday} {--daysBackwards= : The number of days to retrieve the events; default to 31. If the hours backwards option is provided then this option is ignored.} {--hoursBackwards= : The number of hours to retrieve the events; default to 0} {--filter= : A filter expresion. More info at https://documentation.mailgun.com/api-events.html#filter-expression} {--stopAfterNPages= : The process will stop after N pages without new events. Defaults to 5}';
+    protected $signature = 'mailgun-events:events {--yesterday= : Fetch Yesterday} {--daysBackwards= : The number of days to retrieve the events; default to 31. If the hours backwards option is provided then this option is ignored.} {--hoursBackwards= : The number of hours to retrieve the events; default to 0} {--filter= : A filter expresion. More info at https://documentation.mailgun.com/api-events.html#filter-expression} {--stopAfterNPages= : The process will stop after N pages without new events. Defaults to 5}';
 
     /**
      * The console command description.
