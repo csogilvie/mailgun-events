@@ -44,7 +44,7 @@ class UpdateCampaigns extends Command
             $campaigns = MailgunEvents::getCampaigns($limit, $skip);
 
             //Break the loop if there are no more items
-            if (count($campaigns->items) == 0) {
+            if (!property_exists($campaigns, 'items') || count($campaigns->items) == 0) {
                 $this->info("No campaigns were included in the request.");
                 break;
             }
